@@ -7,10 +7,14 @@ from aiogram.types import InlineKeyboardButton,InlineKeyboardMarkup,Message,Call
 def extract_video_id(url: str) -> str | None:
     if "v=" in url:
         return url.split("v=")[-1].split("&")[0]
-    elif "youtu.be/" in url:
+    
+    if "youtu.be/" in url:
         return url.split("youtu.be/")[-1].split("?")[0]
-    else:
-        return None
+    
+    if "shorts/" in url:
+        return url.split("shorts/")[-1].split("?")[0]
+    
+    return None
 
 
 def get_user_sync(telegram_id: int) -> User | None:

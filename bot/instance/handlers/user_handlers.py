@@ -206,7 +206,7 @@ async def video_url_handler(message: Message, state: FSMContext):
     video_id = extract_video_id(url)
     if not video_id:
         invalid_url_error = "❌ <b>📺 URL noto‘g‘ri!</b>\nIltimos, to‘g‘ri YouTube video URL kiriting."
-        await message.answer(text=invalid_url_error)
+        await message.answer(text=invalid_url_error,parse_mode='HTML')
         return
 
     data = await state.get_data()
